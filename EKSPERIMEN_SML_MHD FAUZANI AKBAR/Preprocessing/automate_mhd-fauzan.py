@@ -2,6 +2,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import pandas as pd
+import argparse
+import os
 
 def preprocess_data(data, path):
     # Ambil fitur numerik dan kategorikal
@@ -42,7 +44,12 @@ def preprocess_data(data, path):
     return preprocess_df
 
 
-df = pd.read_csv(r"D:\SMSML_MUHAMMAD FAUZANI AKBAR\EKSPERIMEN_SML_MHD FAUZANI AKBAR\Preprocessing\personality_datasert.csv")
-path = r"D:\SMSML_MUHAMMAD FAUZANI AKBAR\EKSPERIMEN_SML_MHD FAUZANI AKBAR\Preprocessing\personality_preprocessing.csv"
-print(df.head())
-jadi = preprocess_data(df, path)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("__input_path", type=str, required=True, help="Path ke file input csv mentah")
+    parser.add_argument("__output_path", type=str, required=True, help="Path ke csv telah di proses")
+
+    args = parser.parse_args()
+
+    df = pd.read_csv(args.input_path)
+    preprocess_data(df, args.output_path)
