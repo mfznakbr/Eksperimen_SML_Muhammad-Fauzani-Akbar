@@ -30,7 +30,7 @@ jobs:
           --output_path "preprocessing/personality_datasert.csv"
 
     - name: Upload CSV as Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: hasil-preprocessing
         path: preprocessing/personality_datasert.csv
