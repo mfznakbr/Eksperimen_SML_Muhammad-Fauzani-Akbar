@@ -39,7 +39,7 @@ jobs:
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
-        git add preprocessing/personality_preprocesing_datasert.csv
+        git add preprocessing/personality_preprocessing_datasert.csv
         git commit -m "Add preprocessed CSV"
         git push
 
