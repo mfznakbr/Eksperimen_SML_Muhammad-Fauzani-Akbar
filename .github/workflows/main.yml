@@ -24,6 +24,6 @@ jobs:
 
     - name: Run preprocessing
       run: |
-        python automate_mhd-fauzan.py \
+        python preprocessing/automate_mhd-fauzan.py \
           --input_path "personality_datasert.csv" \
-          --output_path "Preprocessing/personality_datasert.csv"
+          --output_path "preprocessing/personality_datasert.csv"
