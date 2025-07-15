@@ -46,8 +46,8 @@ def preprocess_data(data, path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("__input_path", type=str, required=True, help="Path ke file input csv mentah")
-    parser.add_argument("__output_path", type=str, required=True, help="Path ke csv telah di proses")
+    parser.add_argument("--input_path", type=str, required=True, help="Path ke file input csv mentah")
+    parser.add_argument("--output_path", type=str, required=True, help="Path ke csv telah di proses")
 
     args = parser.parse_args()
 
