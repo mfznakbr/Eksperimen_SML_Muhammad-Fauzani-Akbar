@@ -26,18 +26,18 @@ jobs:
       run: |
         python preprocessing/automate_mhd-fauzan.py \
           --input_path "personality_datasert.csv" \
-          --output_path "preprocessing/personality_preprocessing_datasert.csv"
+          --output_path "preprocessing/data_test_personality.csv
 
     - name: Upload CSV as Artifact
       uses: actions/upload-artifact@v4
       with:
         name: hasil-preprocessing
-        path: preprocessing/personality_preprocessing_datasert.csv
+        path: preprocessing/data_test_personality.csv
 
     - name: Commit and push result back to repo
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
-        git add preprocessing/personality_preprocessing_datasert.csv
+        git add preprocessing/data_test_personality.csv
         git commit -m "Add preprocessed CSV"
         git push
