@@ -53,7 +53,7 @@ def preprocess_data(data, path):
 
     preprocess_df.to_csv(path, index=False)
 
-    print("SELESAI EUYYY MANTAP")
+    print("SELESAI")
 
     return preprocess_df
 
