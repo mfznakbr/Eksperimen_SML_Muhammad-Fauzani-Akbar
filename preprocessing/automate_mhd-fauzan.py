@@ -11,12 +11,8 @@ def preprocess_data(data, path):
     numeric = data.select_dtypes(include=['float64', 'int64']).columns.tolist()
     categorical = ['Stage_fear', 'Drained_after_socializing']
     target = 'Personality'
-
-    # encode kolom target
-    le = LabelEncoder()
-    data[target] = le.fit_transform(data[target])
+    
     # bersihkan data dari missing value dan duplicate value
-
     data = data.dropna()
     data = data.drop_duplicates()
 
@@ -31,6 +27,9 @@ def preprocess_data(data, path):
         ('encoder', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
     ])
 
+    label_encode = Pipeline([
+        ('label_encod', LabelEncoder())
+    ])
 
     scaler_transform = Pipeline([
         ('scaler', StandardScaler())
@@ -39,6 +38,7 @@ def preprocess_data(data, path):
     prerocessing = ColumnTransformer([
         ('num', scaler_transform, numeric),
         ('onehot', onehot_transform, categorical),
+        ('label_encode', label_encode, target)
     ])
 
     transform_data = prerocessing.fit_transform(data)
@@ -50,7 +50,7 @@ def preprocess_data(data, path):
     # gabung hasil dengan target
     preprocess_df = pd.DataFrame(transform_data, columns=all_columns)
     preprocess_df[target] = data[target].values
-
+    
     preprocess_df.to_csv(path, index=False)
 
     print("SELESAI")
